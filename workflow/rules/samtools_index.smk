@@ -19,6 +19,8 @@ rule samtools_index:
     container:
         config.get("samtools_index", {}).get("container", "default_container")
     threads: config.get("samtools_index", config["default"])["cores"]
+    conda:
+        "../envs/{rule}.yaml"
     message:
         "{rule}: Index {wildcards.file} bam file"
     wrapper:
