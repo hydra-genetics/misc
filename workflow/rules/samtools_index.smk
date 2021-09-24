@@ -18,9 +18,8 @@ rule samtools_index:
         )
     container:
         config.get("samtools_index", {}).get("container", "default_container")
+    threads: config.get("samtools_index", config["default"])["cores"]
     message:
         "{rule}: Index {wildcards.file} bam file"
-    shell:
-        "samtools index "
-        "-b {input} "
-        "{output} &> {log}"
+    wrapper:
+        "0.78.0/bio/samtools/index"
