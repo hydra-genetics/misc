@@ -1,16 +1,20 @@
-# vim: syntax=python tabstop=4 expandtab
-# coding: utf-8
-
-__author__ = "Patrik Smeds"
-__copyright__ = "Copyright 2021, Patrik Smeds"
-__email__ = "patrik.smeds@scilifelab.uu.se"
+__author__ = "Jonas Almlöf"
+__copyright__ = "Copyright 2021, Jonas Almlöf"
+__email__ = "jonas.almlof@scilifelab.uu.se"
 __license__ = "GPL-3"
 
-import pandas as pd
+
+import pandas
+import yaml
 from snakemake.utils import validate
 from snakemake.utils import min_version
 
+from hydra_genetics.utils.units import *
+from hydra_genetics.utils.samples import *
+from hydra_genetics.utils.misc import *
+
 min_version("6.8.0")
+
 
 ### Set and validate config file
 
@@ -18,37 +22,30 @@ min_version("6.8.0")
 configfile: "config.yaml"
 
 
+with open(config["resources"]) as yml:
+    config = merge(config, yaml.load(yml))
+
+
 validate(config, schema="../schemas/config.schema.yaml")
 
 
 ### Read and validate samples file
 
-samples = pd.read_table(config["samples"], dtype=str).set_index("sample", drop=False)
+samples = pandas.read_table(config["samples"], dtype=str).set_index("sample", drop=False)
 validate(samples, schema="../schemas/samples.schema.yaml")
 
 ### Read and validate units file
 
-units = pd.read_table(config["units"], dtype=str).set_index(
-    ["sample", "unit", "run", "lane"], drop=False
-)
+units = pandas.read_table(config["units"], dtype=str).set_index(["sample", "type", "run", "lane"], drop=False)
 validate(units, schema="../schemas/units.schema.yaml")
 
 ### Set wildcard constraints
 
 
 wildcard_constraints:
-    sample="|".join(samples.index),
+    sample="|".join(get_samples(samples)),
+    unit="N|T|R",
 
-def get_fastq(wildcards):
-    fastqs = units.loc[
-        (wildcards.sample, wildcards.unit, wildcards.run, wildcards.lane), ["fastq1", "fastq2"]
-    ].dropna()
-    return {"fwd": fastqs.fastq1, "rev": fastqs.fastq2}
-
-
-def get_sample_fastq(wildcards):
-    fastqs = units.loc[(wildcards.sample, wildcards.unit), ["fastq1", "fastq2"]].dropna()
-    return {"fwd": fastqs["fastq1"].tolist(), "rev": fastqs["fastq2"].tolist()}
 
 def compile_output_list(wildcards):
     return ["dummy.txt"]
