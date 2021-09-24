@@ -1,0 +1,7 @@
+samtools_index:
+  cores: 2
+  time: "4:00:00"
+
+default:
+  cores: 1
+  time: "12:00:00"
