@@ -27,6 +27,7 @@ with open(config["resources"]) as yml:
 
 
 validate(config, schema="../schemas/config.schema.yaml")
+validate(config, schema="../schemas/resources.schema.yaml")
 
 
 ### Read and validate samples file
@@ -44,8 +45,12 @@ validate(units, schema="../schemas/units.schema.yaml")
 
 wildcard_constraints:
     sample="|".join(get_samples(samples)),
-    unit="N|T|R",
+    type="N|T|R",
 
 
 def compile_output_list(wildcards):
-    return ["dummy.txt"]
+    return [
+        "alignment/bwa_mem/%s_%s.bam.bai" % (sample, unit_type)
+        for sample in get_samples(samples)
+        for unit_type in get_unit_types(units, sample)
+    ]
