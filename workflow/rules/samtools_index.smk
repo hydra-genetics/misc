@@ -18,7 +18,7 @@ rule samtools_index:
         )
     container:
         config.get("samtools_index", {}).get("container", "default_container")
-    threads: config.get("samtools_index", config["default_resources"])["cores"]
+    threads: config.get("samtools_index", config["default_resources"])["threads"]
     conda:
         "../envs/samtools_index.yaml"
     message:
