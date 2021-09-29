@@ -41,5 +41,5 @@ jobs:
       - name: Integration test with conda - small dataset
         working-directory: .tests/integration
         run: |
-        mamba install -c conda-forge -c bioconda snakemake singularity
-        snakemake --cores 2 -s ../../workflow/Snakefile -j 2 --use-conda
+          mamba install -c conda-forge -c bioconda snakemake singularity
+          snakemake --cores 2 -s ../../workflow/Snakefile -j 2 --use-conda
