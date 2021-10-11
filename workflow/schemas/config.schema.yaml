@@ -6,14 +6,18 @@ properties:
     type: string
   units:
     type: string
-  containers:
+  default_container:
+    type: string
+  samtools_index:
     type: object
     properties:
-      common:
+      benchmark_repeats:
+        type: integer
+        description: set number of times benchmark should be repeated for bwa_mem
+      container:
         type: string
-    required:
-      - common
+        description: name or path to docker/singularity container
   required:
     - samples
     - units
-    - containers
+    - default_container
