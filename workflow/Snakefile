@@ -9,6 +9,7 @@ __license__ = "GPL-3"
 
 include: "rules/common.smk"
 include: "rules/samtools_index.smk"
+include: "rules/bgzip.smk"
 
 
 report: "report/workflow.rst"

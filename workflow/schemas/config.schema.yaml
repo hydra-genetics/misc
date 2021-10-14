@@ -8,15 +8,27 @@ properties:
     type: string
   default_container:
     type: string
+
   samtools_index:
     type: object
     properties:
       benchmark_repeats:
         type: integer
-        description: set number of times benchmark should be repeated for bwa_mem
+        description: set number of times benchmark should be repeated for samtools_index
       container:
         type: string
         description: name or path to docker/singularity container
+
+  bgzip:
+    type: object
+    properties:
+      benchmark_repeats:
+        type: integer
+        description: set number of times benchmark should be repeated for bgzip
+      container:
+        type: string
+        description: name or path to docker/singularity container
+
   required:
     - samples
     - units

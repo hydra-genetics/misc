@@ -46,8 +46,10 @@ wildcard_constraints:
 
 
 def compile_output_list(wildcards):
-    return [
+    outputfiles = [
         "alignment/bwa_mem/%s_%s.bam.bai" % (sample, unit_type)
         for sample in get_samples(samples)
         for unit_type in get_unit_types(units, sample)
     ]
+    outputfiles.append("snv_indel/NA12878_N_chr1.unfilt.vcf.gz")
+    return outputfiles

@@ -2,15 +2,26 @@ $schema: "http://json-schema.org/draft-04/schema#"
 description: snakemake configuration file
 type: object
 properties:
+
   samtools_index:
     type: object
     properties:
       threads:
         type: integer
-        description: number of threads that will be used by the 'bwa_mem' rule
+        description: number of threads that will be used by the 'samtools_index' rule
       time:
         type: string
-        description: max execution time for the 'bwa_mem' rule
+        description: max execution time for the 'samtools_index' rule
+
+  bgzip:
+    type: object
+    properties:
+      threads:
+        type: integer
+        description: number of threads that will be used by the 'bgzip' rule
+      time:
+        type: string
+        description: max execution time for the 'bgzip' rule
 
   default_resources:
     type: object
@@ -21,6 +32,6 @@ properties:
       time:
         type: string
         description: default max execution time for a rule
-        
+
   required:
     - default_resources
