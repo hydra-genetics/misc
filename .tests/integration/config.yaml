@@ -3,3 +3,6 @@ units: "units.tsv"
 resources: "resources.yaml"
 
 default_container: "docker://marrip/common:1.1.0"
+
+bgzip:
+  container: "docker://gmsuppsala/somatic:develop"
