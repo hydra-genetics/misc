@@ -2,7 +2,7 @@ samples: "samples.tsv"
 units: "units.tsv"
 resources: "resources.yaml"
 
-default_container: "docker://marrip/common:1.1.0"
+default_container: "docker://gmsuppsala/somatic:develop"
 
 bgzip:
   container: "docker://gmsuppsala/somatic:develop"
