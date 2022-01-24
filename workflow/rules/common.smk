@@ -51,5 +51,6 @@ def compile_output_list(wildcards):
         for sample in get_samples(samples)
         for unit_type in get_unit_types(units, sample)
     ]
+    outputfiles.append("snv_indel/vardict/NA12878_N.test.vcf")
     outputfiles.append("snv_indel/NA12878_N_chr1.unfilt.vcf.gz")
     return outputfiles
