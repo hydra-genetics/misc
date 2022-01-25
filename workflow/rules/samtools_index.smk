@@ -18,7 +18,7 @@ rule samtools_index:
             "{file}.bam.bai.benchmark.tsv",
             config.get("samtools_index", {}).get("benchmark_repeats", 1),
         )
-    threads: config.get("samtools_index", {}).get("threads", config["default_resources"]["threads"]),
+    threads: config.get("samtools_index", {}).get("threads", config["default_resources"]["threads"])
     resources:
         mem_mb=config.get("samtools_index", {}).get("mem_mb", config["default_resources"]["mem_mb"]),
         mem_per_cpu=config.get("samtools_index", {}).get("mem_per_cpu", config["default_resources"]["mem_per_cpu"]),
