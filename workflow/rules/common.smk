@@ -55,10 +55,10 @@ def compile_output_list(wildcards):
         ] + ["vcf.gz"],
     }
     outputfiles = [
-        "%s/%s_%s.%s" % (rule, sample, unit_type, extension)
-        for elur in files.keys()
+        "%s/%s_%s.%s" % (prefix, sample, unit_type, suffix)
+        for prefix in files.keys()
         for sample in get_samples(samples)
         for unit_type in get_unit_types(units, sample)
-        for extension in files[rule]
+        for suffix in files[prefix]
     ]
     return outputfiles
