@@ -6,18 +6,30 @@ properties:
     type: string
   units:
     type: string
+  resources:
+    type: string
+    description: Path to resources.yaml file
   default_container:
     type: string
+    description: name or path to a default docker/singularity container
+  required:
+    - samples
+    - units
+    - resources
+    - default_container
 
-  samtools_index:
+  bedtools_intersect:
     type: object
     properties:
       benchmark_repeats:
         type: integer
-        description: set number of times benchmark should be repeated for samtools_index
+        description: set number of times benchmark should be repeated for bedtools_intersect
       container:
         type: string
         description: name or path to docker/singularity container
+      extra:
+        type: string
+        description: parameters that should be forwarded to bedtools_intersect
 
   bgzip:
     type: object
@@ -29,7 +41,15 @@ properties:
         type: string
         description: name or path to docker/singularity container
 
-  required:
-    - samples
-    - units
-    - default_container
+  samtools_index:
+    type: object
+    properties:
+      benchmark_repeats:
+        type: integer
+        description: set number of times benchmark should be repeated for samtools_index
+      container:
+        type: string
+        description: name or path to docker/singularity container
+      extra:
+        type: string
+        description: parameters that should be forwarded to samtools_index
