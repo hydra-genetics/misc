@@ -46,11 +46,19 @@ wildcard_constraints:
 
 
 def compile_output_list(wildcards):
+    files = {
+        "alignment/bwa_mem": [
+            "bam.bai",
+        ],
+        "snv_indel/vardict": [
+            "%s.vcf" % (bed) for bed in config["vardict"]["bed_files"].keys()
+        ] + ["vcf.gz"],
+    }
     outputfiles = [
-        "alignment/bwa_mem/%s_%s.bam.bai" % (sample, unit_type)
+        "%s/%s_%s.%s" % (rule, sample, unit_type, extension)
+        for elur in files.keys()
         for sample in get_samples(samples)
         for unit_type in get_unit_types(units, sample)
+        for extension in files[rule]
     ]
-    outputfiles.append("snv_indel/vardict/NA12878_N.test.vcf")
-    outputfiles.append("snv_indel/NA12878_N_chr1.unfilt.vcf.gz")
     return outputfiles
