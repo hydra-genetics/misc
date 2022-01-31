@@ -8,8 +8,9 @@ __license__ = "GPL-3"
 
 
 include: "rules/common.smk"
-include: "rules/samtools_index.smk"
+include: "rules/bedtools_intersect.smk"
 include: "rules/bgzip.smk"
+include: "rules/samtools_index.smk"
 
 
 report: "report/workflow.rst"

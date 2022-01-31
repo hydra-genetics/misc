@@ -2,16 +2,46 @@ $schema: "http://json-schema.org/draft-04/schema#"
 description: snakemake configuration file
 type: object
 properties:
-
-  samtools_index:
+  default_resources:
     type: object
     properties:
       threads:
         type: integer
-        description: number of threads that will be used by the 'samtools_index' rule
+        description: default number of threads that will be used by a rule
       time:
         type: string
-        description: max execution time for the 'samtools_index' rule
+        description: default max execution time for a rule
+      mem_mb:
+        type: integer
+        description: default memory used for a rule
+      mem_per_cpu:
+        type: integer
+        description: default memory used per cpu for a rule
+      partition:
+        type: string
+        description: default partition to use on the cluster for a rule
+
+  required:
+    - default_resources
+
+  bedtools_intersect:
+    type: object
+    properties:
+      threads:
+        type: integer
+        description: number of threads that will be used by the 'bedtools_intersect' rule
+      time:
+        type: string
+        description: max execution time for the 'bedtools_intersect' rule
+      mem_mb:
+        type: integer
+        description: memory used for 'bedtools_intersect'
+      mem_per_cpu:
+        type: integer
+        description: memory used per cpu for 'bedtools_intersect'
+      partition:
+        type: string
+        description: partition to use on the cluster for 'bedtools_intersect'
 
   bgzip:
     type: object
@@ -22,16 +52,31 @@ properties:
       time:
         type: string
         description: max execution time for the 'bgzip' rule
+      mem_mb:
+        type: integer
+        description: memory used for 'bgzip'
+      mem_per_cpu:
+        type: integer
+        description: memory used per cpu for 'bgzip'
+      partition:
+        type: string
+        description: partition to use on the cluster for 'bgzip'
 
-  default_resources:
+  samtools_index:
     type: object
     properties:
       threads:
         type: integer
-        description: default number of threads that will be used by a rule
+        description: number of threads that will be used by the 'samtools_index' rule
       time:
         type: string
-        description: default max execution time for a rule
-
-  required:
-    - default_resources
+        description: max execution time for the 'samtools_index' rule
+      mem_mb:
+        type: integer
+        description: memory used for 'samtools_index'
+      mem_per_cpu:
+        type: integer
+        description: memory used per cpu for 'samtools_index'
+      partition:
+        type: string
+        description: partition to use on the cluster for 'samtools_index'

@@ -2,7 +2,8 @@ samples: "samples.tsv"
 units: "units.tsv"
 resources: "resources.yaml"
 
-default_container: "docker://gmsuppsala/somatic:develop"
+default_container: "docker://hydragenetics/common:0.0.1"
 
-bgzip:
-  container: "docker://gmsuppsala/somatic:develop"
+vardict:
+  bed_files:
+    test: "reference/test.bed"

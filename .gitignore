@@ -1,4 +1,5 @@
-.eggs
 __pycache__
+.eggs
 .snakemake
-alignment
+*.benchmark.tsv
+*.log
