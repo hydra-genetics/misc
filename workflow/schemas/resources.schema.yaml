@@ -62,6 +62,25 @@ properties:
         type: string
         description: partition to use on the cluster for 'bgzip'
 
+  imagemagick_convert:
+    type: object
+    properties:
+      threads:
+        type: integer
+        description: number of threads that will be used by the 'imagemagick_convert' rule
+      time:
+        type: string
+        description: max execution time for the 'imagemagick_convert' rule
+      mem_mb:
+        type: integer
+        description: memory used for 'imagemagick_convert'
+      mem_per_cpu:
+        type: integer
+        description: memory used per cpu for 'imagemagick_convert'
+      partition:
+        type: string
+        description: partition to use on the cluster for 'imagemagick_convert'
+
   samtools_index:
     type: object
     properties:

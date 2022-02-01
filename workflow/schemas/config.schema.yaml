@@ -41,6 +41,19 @@ properties:
         type: string
         description: name or path to docker/singularity container
 
+  imagemagick_convert:
+    type: object
+    properties:
+      benchmark_repeats:
+        type: integer
+        description: set number of times benchmark should be repeated for imagemagick_convert
+      container:
+        type: string
+        description: name or path to docker/singularity container
+      extra:
+        type: string
+        description: parameters that should be forwarded to imagemagick_convert
+
   samtools_index:
     type: object
     properties:

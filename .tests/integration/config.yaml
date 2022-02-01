@@ -4,6 +4,9 @@ resources: "resources.yaml"
 
 default_container: "docker://hydragenetics/common:0.0.1"
 
+imagemagick_convert:
+  container: "docker://hydragenetics/imagemagick:7.1.0_20"
+
 vardict:
   bed_files:
     test: "reference/test.bed"
