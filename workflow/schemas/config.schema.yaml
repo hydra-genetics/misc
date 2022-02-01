@@ -66,3 +66,16 @@ properties:
       extra:
         type: string
         description: parameters that should be forwarded to samtools_index
+
+  tabix:
+    type: object
+    properties:
+      benchmark_repeats:
+        type: integer
+        description: set number of times benchmark should be repeated for tabix
+      container:
+        type: string
+        description: name or path to docker/singularity container
+      extra:
+        type: string
+        description: parameters that should be forwarded to tabix
