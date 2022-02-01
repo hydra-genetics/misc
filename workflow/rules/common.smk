@@ -53,7 +53,7 @@ def compile_output_list(wildcards):
         "cnv_sv/cnvkit_diagram": [
             "png",
         ],
-        "snv_indel/vardict": ["%s.vcf" % (bed) for bed in config["vardict"]["bed_files"].keys()] + ["vcf.gz"],
+        "snv_indel/vardict": ["%s.vcf" % (bed) for bed in config["vardict"]["bed_files"].keys()] + ["vcf.gz.tbi"],
     }
     outputfiles = [
         "%s/%s_%s.%s" % (prefix, sample, unit_type, suffix)
