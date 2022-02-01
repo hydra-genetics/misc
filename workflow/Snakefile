@@ -9,6 +9,7 @@ include: "rules/bedtools_intersect.smk"
 include: "rules/bgzip.smk"
 include: "rules/imagemagick.smk"
 include: "rules/samtools_index.smk"
+include: "rules/tabix.smk"
 
 
 rule all:
