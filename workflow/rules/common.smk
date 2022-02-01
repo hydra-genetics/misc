@@ -50,6 +50,9 @@ def compile_output_list(wildcards):
         "alignment/bwa_mem": [
             "bam.bai",
         ],
+        "cnv_sv/cnvkit_diagram": [
+            "png",
+        ],
         "snv_indel/vardict": ["%s.vcf" % (bed) for bed in config["vardict"]["bed_files"].keys()] + ["vcf.gz"],
     }
     outputfiles = [
