@@ -10,7 +10,7 @@ rule imagemagick_convert:
     output:
         png=temp("{file}.png"),
     params:
-        extra=config.get("bedtools_intersect", {}).get("extra", ""),
+        extra=config.get("imagemagick_convert", {}).get("extra", ""),
     log:
         "{file}.png.log",
     benchmark:
