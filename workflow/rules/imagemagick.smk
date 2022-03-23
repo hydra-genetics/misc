@@ -30,7 +30,7 @@ rule imagemagick_convert:
     conda:
         "../envs/imagemagick.yaml"
     message:
-        "{rule}: Convert {wildcards.file}.pdf {wildcards.file}.png"
+        "{rule}: convert {input.pdf} to png"
     shell:
         "(convert "
         "{params.extra} "
