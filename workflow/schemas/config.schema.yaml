@@ -2,80 +2,82 @@ $schema: "http://json-schema.org/draft-04/schema#"
 description: snakemake configuration file
 type: object
 properties:
-  samples:
-    type: string
-  units:
-    type: string
   resources:
     type: string
-    description: Path to resources.yaml file
+    description: path to resources.yaml file
+  samples:
+    type: string
+    description: path to samples.tsv file
+  units:
+    type: string
+    description: path to units.tsv file
   default_container:
     type: string
     description: name or path to a default docker/singularity container
-  required:
-    - samples
-    - units
-    - resources
-    - default_container
-
   bedtools_intersect:
     type: object
+    description: parameters for bedtools_intersect
     properties:
       benchmark_repeats:
         type: integer
-        description: set number of times benchmark should be repeated for bedtools_intersect
+        description: set number of times benchmark should be repeated
       container:
         type: string
         description: name or path to docker/singularity container
       extra:
         type: string
-        description: parameters that should be forwarded to bedtools_intersect
-
+        description: parameters that should be forwarded
   bgzip:
     type: object
+    description: parameters for bgzip
     properties:
       benchmark_repeats:
         type: integer
-        description: set number of times benchmark should be repeated for bgzip
+        description: set number of times benchmark should be repeated
       container:
         type: string
         description: name or path to docker/singularity container
-
   imagemagick_convert:
     type: object
+    description: parameters for imagemagick_convert
     properties:
       benchmark_repeats:
         type: integer
-        description: set number of times benchmark should be repeated for imagemagick_convert
+        description: set number of times benchmark should be repeated
       container:
         type: string
         description: name or path to docker/singularity container
       extra:
         type: string
-        description: parameters that should be forwarded to imagemagick_convert
-
+        description: parameters that should be forwarded
   samtools_index:
     type: object
+    description: parameters for samtools_index
     properties:
       benchmark_repeats:
         type: integer
-        description: set number of times benchmark should be repeated for samtools_index
+        description: set number of times benchmark should be repeated
       container:
         type: string
         description: name or path to docker/singularity container
       extra:
         type: string
-        description: parameters that should be forwarded to samtools_index
-
+        description: parameters that should be forwarded
   tabix:
     type: object
+    description: parameters for tabix
     properties:
       benchmark_repeats:
         type: integer
-        description: set number of times benchmark should be repeated for tabix
+        description: set number of times benchmark should be repeated
       container:
         type: string
         description: name or path to docker/singularity container
       extra:
         type: string
-        description: parameters that should be forwarded to tabix
+        description: parameters that should be forwarded
+required:
+  - default_container
+  - resources
+  - samples
+  - units

@@ -28,8 +28,8 @@ rule samtools_index:
     container:
         config.get("samtools_index", {}).get("container", config["default_container"])
     conda:
-        "../envs/samtools_index.yaml"
+        "../envs/samtools.yaml"
     message:
-        "{rule}: Index {wildcards.file}.bam file"
+        "{rule}: index {input.bam}"
     wrapper:
-        "0.78.0/bio/samtools/index"
+        "v1.3.1/bio/samtools/index"

@@ -5,10 +5,10 @@ __license__ = "GPL-3"
 
 
 include: "rules/common.smk"
-include: "rules/bedtools_intersect.smk"
+include: "rules/bedtools.smk"
 include: "rules/bgzip.smk"
 include: "rules/imagemagick.smk"
-include: "rules/samtools_index.smk"
+include: "rules/samtools.smk"
 include: "rules/tabix.smk"
 
 

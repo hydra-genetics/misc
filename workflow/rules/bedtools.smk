@@ -29,8 +29,8 @@ rule bedtools_intersect:
     container:
         config.get("bedtools_intersect", {}).get("container", config["default_container"])
     conda:
-        "../envs/bedtools_intersect.yaml"
+        "../envs/bedtools.yaml"
     message:
-        "{rule}: Filter {wildcards.module}/{wildcards.caller}/{wildcards.file} with {wildcards.bed} bed-file"
+        "{rule}: filter {input.left} using {input.right}"
     wrapper:
-        "0.85.0/bio/bedtools/intersect"
+        "v1.3.1/bio/bedtools/intersect"
