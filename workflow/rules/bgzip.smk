@@ -6,9 +6,11 @@ __license__ = "GPL-3"
 
 rule bgzip:
     input:
-        "{file}",
+        pre="{file}",
     output:
-        temp("{file}.gz"),
+        gz=temp("{file}.gz"),
+    params:
+        extra=config.get("bgzip", {}).get("extra", ""),
     log:
         "{file}.gz.log",
     benchmark:
@@ -25,6 +27,6 @@ rule bgzip:
     conda:
         "../envs/bgzip.yaml"
     message:
-        "{rule}: Bgzip {wildcards.file}"
-    shell:
-        "(bgzip -c {input} > {output}) &> {log}"
+        "{rule}: bgzip {wildcards.file}"
+    wrapper:
+        "v1.3.1/bio/bgzip"
