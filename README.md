@@ -4,7 +4,7 @@
 
 ![Lint](https://github.com/hydra-genetics/misc/actions/workflows/lint.yaml/badge.svg?branch=develop)
 ![Snakefmt](https://github.com/hydra-genetics/misc/actions/workflows/snakefmt.yaml/badge.svg?branch=develop)
-![integration test](https://github.com/hydra-genetics/misc/actions/workflows/integration1.yaml/badge.svg?branch=develop)
+![integration test](https://github.com/hydra-genetics/misc/actions/workflows/integration.yaml/badge.svg?branch=develop)
 ![snakemake dry run](https://github.com/hydra-genetics/misc/actions/workflows/snakemake-dry-run.yaml/badge.svg?branch=develop)
 
 [![License: GPL-3](https://img.shields.io/badge/License-GPL3-yellow.svg)](https://opensource.org/licenses/gpl-3.0.html)
