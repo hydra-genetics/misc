@@ -1,7 +1,8 @@
----
+resources: "resources.yaml"
+samples: "samples.tsv"
+units: "units.tsv"
 
- samples: "samples.tsv"
- units: "units.tsv"
+default_container: "docker://hydragenetics/common:0.1.1"
 
- tools:
-   common: "docker://hydra/common:1.1.0"
+imagemagick_convert:
+  container: "docker://hydragenetics/imagemagick:7.1.0_20"
