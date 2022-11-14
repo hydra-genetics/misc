@@ -1,5 +1,19 @@
 # Changelog
 
+## [0.2.0](https://www.github.com/hydra-genetics/misc/compare/v0.1.0...v0.2.0) (2022-11-14)
+
+
+### Features
+
+* make config.yaml location more flexible ([835c8f6](https://www.github.com/hydra-genetics/misc/commit/835c8f6ae78d903623d0d72f0b12cb0a8c854eee))
+* make configfile/confgilefiles argument mandatory ([fe809e4](https://www.github.com/hydra-genetics/misc/commit/fe809e40868cfd8f4935b3cff4bee686050744e5))
+* update snakemake-version ([6f5ebbe](https://www.github.com/hydra-genetics/misc/commit/6f5ebbe0152e495a9cede577de0fa234b25f52a1))
+
+
+### Bug Fixes
+
+* set version for tabulate and update hydra-genetics version ([05048c8](https://www.github.com/hydra-genetics/misc/commit/05048c88b932823e3562d33640ec1064df1c98a6))
+
 ## 0.1.0 (2022-03-24)
 
 
