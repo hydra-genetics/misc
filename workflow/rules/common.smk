@@ -13,13 +13,13 @@ from hydra_genetics.utils.resources import load_resources
 from hydra_genetics.utils.units import *
 from hydra_genetics.utils.samples import *
 
-min_version("6.8.0")
+min_version("7.8.0")
 
 
 ### Set and validate config file
 
-
-configfile: "config.yaml"
+if not workflow.overwrite_configfiles:
+    sys.exit("At least one config file must be passed using --configfile/--configfiles, by command line or a profile!")
 
 
 validate(config, schema="../schemas/config.schema.yaml")
