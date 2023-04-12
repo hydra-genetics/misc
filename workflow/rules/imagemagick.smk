@@ -27,8 +27,6 @@ rule imagemagick_convert:
         time=config.get("imagemagick_convert", {}).get("time", config["default_resources"]["time"]),
     container:
         config.get("imagemagick_convert", {}).get("container", config["default_container"])
-    conda:
-        "../envs/imagemagick.yaml"
     message:
         "{rule}: convert {input.pdf} to png"
     shell:
