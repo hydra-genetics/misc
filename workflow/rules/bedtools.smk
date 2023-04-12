@@ -28,8 +28,6 @@ rule bedtools_intersect:
         time=config.get("bedtools_intersect", {}).get("time", config["default_resources"]["time"]),
     container:
         config.get("bedtools_intersect", {}).get("container", config["default_container"])
-    conda:
-        "../envs/bedtools.yaml"
     message:
         "{rule}: filter {input.left} using {input.right}"
     wrapper:
