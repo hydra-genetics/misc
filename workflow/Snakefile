@@ -5,6 +5,7 @@ __license__ = "GPL-3"
 
 
 include: "rules/common.smk"
+include: "rules/samtools2.smk"
 include: "rules/bedtools.smk"
 include: "rules/bgzip.smk"
 include: "rules/imagemagick.smk"
