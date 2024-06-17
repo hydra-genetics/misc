@@ -49,6 +49,8 @@ rule samtools_fastq_single:
         time=config.get("make_fastq", {}).get("time", config["default_resources"]["time"]),
         threads=config.get("make_fastq", {}).get("threads", config["default_resources"]["threads"]),
         mem_per_cpu=config.get("make_fastq", {}).get("mem_per_cpu", config["default_resources"]["mem_per_cpu"]),
+    container:
+        config.get("samtools_index", {}).get("container", config["default_container"])
     params:
         extra="",
     shell:
