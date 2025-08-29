@@ -27,8 +27,6 @@ rule samtools_index:
         time=config.get("samtools_index", {}).get("time", config["default_resources"]["time"]),
     container:
         config.get("samtools_index", {}).get("container", config["default_container"])
-    conda:
-        "../envs/samtools.yaml"
     message:
         "{rule}: index {input.bam}"
     wrapper:
