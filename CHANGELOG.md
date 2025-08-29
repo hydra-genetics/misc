@@ -1,5 +1,13 @@
 # Changelog
 
+## [0.3.0](https://www.github.com/hydra-genetics/misc/compare/v0.2.0...v0.3.0) (2025-08-29)
+
+
+### Features
+
+* drop conda support and testing ([943c851](https://www.github.com/hydra-genetics/misc/commit/943c851f296cdbcd697c32ec72eb2fc517e85304))
+* update snakemake version, allow range up to version 8 ([5ec7ac4](https://www.github.com/hydra-genetics/misc/commit/5ec7ac4ca65d865a37a21bf2c590e66ba7dc3c18))
+
 ## [0.2.0](https://www.github.com/hydra-genetics/misc/compare/v0.1.0...v0.2.0) (2022-11-14)
 
 
