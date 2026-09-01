@@ -2,7 +2,7 @@ resources: "resources.yaml"
 samples: "samples.tsv"
 units: "units.tsv"
 
-default_container: "docker://hydragenetics/common:0.1.1"
+default_container: "docker://hydragenetics/common:4.0.0Python3.12"
 
 imagemagick_convert:
   container: "docker://hydragenetics/imagemagick:7.1.0_20"

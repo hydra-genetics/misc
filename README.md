@@ -2,10 +2,7 @@
 
 ### Snakemake module containing general steps for indexing, zipping, converting etc.
 
-![Lint](https://github.com/hydra-genetics/misc/actions/workflows/lint.yaml/badge.svg?branch=develop)
-![Snakefmt](https://github.com/hydra-genetics/misc/actions/workflows/snakefmt.yaml/badge.svg?branch=develop)
-![integration test](https://github.com/hydra-genetics/misc/actions/workflows/integration.yaml/badge.svg?branch=develop)
-![snakemake dry run](https://github.com/hydra-genetics/misc/actions/workflows/snakemake-dry-run.yaml/badge.svg?branch=develop)
+![CI](https://github.com/hydra-genetics/misc/actions/workflows/ci.yaml/badge.svg?branch=develop)
 
 [![License: GPL-3](https://img.shields.io/badge/License-GPL3-yellow.svg)](https://opensource.org/licenses/gpl-3.0.html)
 
@@ -20,13 +17,23 @@ via `samples.tsv` and `units.tsv`.
 
 In order to use this module, the following dependencies are required:
 
-[![hydra-genetics](https://img.shields.io/badge/hydragenetics-v0.9.0-blue)](https://github.com/hydra-genetics/)
+[![hydra-genetics](https://img.shields.io/badge/hydragenetics-snakemake9%20branch-blue)](https://github.com/hydra-genetics/)
 [![pandas](https://img.shields.io/badge/pandas-1.3.1-blue)](https://pandas.pydata.org/)
-[![python](https://img.shields.io/badge/python-3.8-blue)](https://www.python.org/)
-[![snakemake](https://img.shields.io/badge/snakemake-6.10.0-blue)](https://snakemake.readthedocs.io/en/stable/)
-[![singularity](https://img.shields.io/badge/singularity-3.0.0-blue)](https://sylabs.io/docs/)
+[![python](https://img.shields.io/badge/python-3.12-blue)](https://www.python.org/)
+[![snakemake](https://img.shields.io/badge/snakemake-9.0.0-blue)](https://snakemake.readthedocs.io/en/stable/)
+[![apptainer](https://img.shields.io/badge/apptainer-1.4.5-blue)](https://apptainer.org/)
 
-**Note! Releases of misc <= v0.1.0 needs tabulate<0.9.0 added in requirements.txt**
+**Note!** This module requires Snakemake 9 and Python 3.12. For Snakemake 7, use misc <= v0.1.x.
+
+**Note!** The default container moved to `hydragenetics/common:4.0.0Python3.12`. Under Snakemake 9 the wrapper
+script runs inside the container, so the image must itself ship Snakemake 9 — older `common` images (Snakemake 7)
+fail every wrapper-based rule with `ModuleNotFoundError: No module named 'snakemake.iocontainers'`. If you
+override `default_container`, supply a Snakemake 9 image.
+
+**Note!** `requirements.txt` currently installs `hydra-genetics` from the
+`migrate-to-snakemake9-python3.12` branch: the latest PyPI release (4.1.1) still annotates with
+`snakemake.io.Wildcards`, which Snakemake 9 moved to `snakemake.iocontainers`. This is swapped back
+to a PyPI pin once a compatible release exists.
 
 ## :school_satchel: Preparations
 
@@ -63,7 +70,7 @@ The workflow repository contains a small test dataset `.tests/integration` which
 
 ```bash
 cd .tests/integration
-snakemake -s ../../Snakefile -j1 --use-singularity
+snakemake -s ../../workflow/Snakefile -j1 --configfile config.yaml --software-deployment-method apptainer
 ```
 
 ## :rocket: Usage

@@ -10,7 +10,7 @@ rule samtools_index:
     output:
         bai=temp("{file}.bam.bai"),
     params:
-        extra=config.get("extra", {}).get("extra", ""),
+        extra=config.get("samtools_index", {}).get("extra", ""),
     log:
         "{file}.bam.bai.log",
     benchmark:
@@ -30,4 +30,4 @@ rule samtools_index:
     message:
         "{rule}: index {input.bam}"
     wrapper:
-        "v1.3.1/bio/samtools/index"
+        "v9.17.0/bio/samtools/index"
