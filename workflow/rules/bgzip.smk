@@ -27,4 +27,4 @@ rule bgzip:
     message:
         "{rule}: bgzip {wildcards.file}"
     wrapper:
-        "v1.3.1/bio/bgzip"
+        "v9.17.0/bio/bgzip"

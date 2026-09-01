@@ -31,4 +31,4 @@ rule bedtools_intersect:
     message:
         "{rule}: filter {input.left} using {input.right}"
     wrapper:
-        "v1.3.1/bio/bedtools/intersect"
+        "v9.17.0/bio/bedtools/intersect"

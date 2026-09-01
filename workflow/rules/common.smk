@@ -4,6 +4,9 @@ __email__ = "jonas.almlof@scilifelab.uu.se"
 __license__ = "GPL-3"
 
 
+import re
+import sys
+
 import pandas
 import yaml
 from snakemake.utils import validate
@@ -13,7 +16,7 @@ from hydra_genetics.utils.resources import load_resources
 from hydra_genetics.utils.units import *
 from hydra_genetics.utils.samples import *
 
-min_version("7.8.0")
+min_version("9.0.0")
 
 
 ### Set and validate config file
@@ -45,7 +48,7 @@ validate(units, schema="../schemas/units.schema.yaml")
 
 
 wildcard_constraints:
-    sample="|".join(get_samples(samples)),
+    sample="|".join(re.escape(s) for s in get_samples(samples)),
     type="N|T|R",
 
 
